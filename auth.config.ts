@@ -11,6 +11,7 @@ export const authConfig = {
   },
   callbacks: {
     async jwt({ token, user }) {
+      console.log("########################### jwt callback ###########################");
       // Add user info to token when user signs in
       if (user) {
         token.id = user.id;
@@ -21,6 +22,10 @@ export const authConfig = {
       return token;
     },
     async session({ session, token }) {
+      console.log("########################### session callback ###########################");
+      console.log("session", session);
+      console.log("token", token);
+
       // Only create session if token is valid (user exists in database)
       if (!token) {
         // Force sign out by throwing error
@@ -35,6 +40,10 @@ export const authConfig = {
       return session;
     },
     authorized({ auth, request: { nextUrl } }) {
+      console.log("########################### checking if user is logged in ###########################");
+      console.log("auth", auth);
+      console.log("nextUrl", nextUrl);
+
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
       if (isOnDashboard) {
@@ -46,5 +55,5 @@ export const authConfig = {
       return true;
     },
   },
-  providers: [], // Add providers with an empty array for now
+  providers: [], // Providers are configured in auth.ts
 } satisfies NextAuthConfig;

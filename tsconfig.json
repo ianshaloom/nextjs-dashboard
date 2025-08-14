@@ -20,7 +20,7 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
@@ -28,8 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/lib/placeholder-data.ts",
-    "scripts/seed.js"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }
