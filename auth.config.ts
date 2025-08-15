@@ -10,7 +10,7 @@ export const authConfig = {
     updateAge: 60 * 15, // 15 minutes
   },
   callbacks: {
-    async jwt({ token, user }) {
+   async jwt({ token, user }) {
       // Add user info to token when user signs in
       if (user) {
         token.id = user.id;
@@ -46,5 +46,5 @@ export const authConfig = {
       return true;
     },
   },
-  providers: [], // Add providers with an empty array for now
+  providers: [], // Providers are configured in auth.ts
 } satisfies NextAuthConfig;
